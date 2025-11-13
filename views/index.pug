@@ -11,17 +11,14 @@ block content
 
   p Welcome to another server i've made.
   button(type="button", class="btn btn-primary", onclick="faster()") Press me
-
+  
+  div(id = "faster") Faster 1 times 2
+	
   script.
     var value = 1;
     var amt = 2;
-  
-  div(id = "faster")
-    != `Faster ${value} times ${amt}`
-  
-  script.
     function faster() {
       amt = amt * 2;
       value = value + amt;
+      document.getElementById("faster").innerHTML = `Faster ${value} times ${amt}`
     }
- 

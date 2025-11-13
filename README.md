@@ -6,6 +6,10 @@ Assingment 11 Express server.
 
 A node express server.
 
+## Resource
+
+Headlights: manufacturer, max lumen, production year
+
 ## Render Link
 
 [https://two5db88sunkanmi-qazzeem.onrender.com]
