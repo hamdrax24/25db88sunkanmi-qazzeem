@@ -13,7 +13,7 @@ router.get('/', api_controller.api);
 /// HEADLIGHT ROUTES ///
 
 // POST request for creating a Costume.
-router.post('/headlight1', headlight_controller.headlight_create_post);
+router.post('/headlight', headlight_controller.headlight_create_post);
 
 // DELETE request to delete Costume.
 router.delete('/headlight/:id', headlight_controller.headlight_delete);
