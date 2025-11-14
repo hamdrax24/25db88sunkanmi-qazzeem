@@ -53,6 +53,21 @@ exports.headlight_delete = function(req, res) {
 };
 
 // Handle Headlight update form on PUT.
-exports.headlight_update_put = function(req, res) {
- res.send('NOT IMPLEMENTED: Headlight update PUT' + req.params.id);
+exports.headlight_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+
+    try {
+        let toUpdate = await Headlight.findById(req.params.id)
+        // Do updates of properties
+        if(req.body.manufacturer) toUpdate.manufacturer = req.body.manufacturer;
+        if(req.body.max_lumen) toUpdate.max_lumen = req.body.max_lumen;
+        if(req.body.production_year) toUpdate.production_year = req.body.production_year;
+        
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
 };
