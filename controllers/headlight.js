@@ -48,8 +48,17 @@ exports.headlight_create_post = async function(req, res) {
 };
 
 // Handle Headlight delete from on DELETE.
-exports.headlight_delete = function(req, res) {
- res.send('NOT IMPLEMENTED: Headlight delete DELETE ' + req.params.id);
+exports.headlight_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+
+    try {
+        result = await Headlight.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 
 // Handle Headlight update form on PUT.
